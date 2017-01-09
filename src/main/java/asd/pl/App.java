@@ -1,16 +1,17 @@
 package asd.pl;
 
+import javax.xml.soap.Text;
+
 /**
  * Hello world!
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        String converted = TextToMorse.convert("Jakis napis");
+        System.out.println("Morse code");
+        System.out.println(converted);
     }
-
-
-    //test
 }
