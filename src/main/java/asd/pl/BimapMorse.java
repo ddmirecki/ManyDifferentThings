@@ -25,7 +25,7 @@ public class BimapMorse {
 
     static {
         for (int i = 0; i < alpha.length; i++) {
-            biMap.put(alpha[i], dottie[i]);
+            biMap.put(alpha[i], dottie[i]); // obie tablice tej samej wielkosci wiec przeleci po obu jednakowo
         }
     }
 
