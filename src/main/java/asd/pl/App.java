@@ -13,5 +13,7 @@ public class App
         String converted = TextToMorse.convert("Jakis napis");
         System.out.println("Morse code");
         System.out.println(converted);
+
+
     }
 }
