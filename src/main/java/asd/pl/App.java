@@ -3,33 +3,45 @@ package asd.pl;
 import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * Hello world!
- *
  */
-public class App
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
 
-        Person person1 = new Person("Jan", "Kowalski", 1980);
-        Person person2 = new Person("Janusz", "Kowalskusz", 1981);
-        Person person3 = new Person("Adam", "Adamski", 1930);
+        //        String s1 = "";
+//        s1.compareTo("A");
+//        Integer.compare(1, 2);
 
+        List personList = new ArrayList<>();
+        personList.add(new Person("Jan", "Kowalski", 1980));
+        personList.add(new Person("Adam", "Mickiewicz", 1960));
+        personList.add(new Person("Adam", "Adamski", 1970));
+        personList.add(new Person("Adam", "Jonski", 1970));
+        personList.add(new Person("Michal", "Kowalski", 1970));
 
-        List<Person> personList = new ArrayList<Person>();
-        personList.add(person1);
-        personList.add(person2);
-        personList.add(person3);
+//        Collections.sort(personList, new PersonBirthYearComparator());
+        Collections.sort(personList, new Comparator<Person>() {
+                    @Override
+                    public int compare(Person person1, Person person2) {
+                        if (person1.getLastname().equals(person2.getLastname())) {
+                            return person1.getFirstName().compareTo(person2.getFirstName());
+                        } else {
+                            return person1.getLastname().compareTo(person2.getLastname());
+                        }
+                    }
 
-        Collections.sort(personList);
+                }
+        );
 
-        for (Object object : personList){
+        for (Object object : personList) {
             System.out.println(object);
         }
-
+    }
+}
 
 //        String converted = TextToMorse.convert("Jakis napis");
 //        System.out.println("Morse code");
@@ -48,5 +60,3 @@ public class App
 
 
 
-    }
-}

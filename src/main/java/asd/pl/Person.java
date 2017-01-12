@@ -54,7 +54,7 @@ public class Person implements Comparable<Person> {
 
     @Override
     public String toString() {
-        return "osoba o imieniu" + firstName + "o nazwisku" + lastname + "o roku urodzenia" + birthyear;
+        return "osoba o imieniu " + firstName + " o nazwisku " + lastname + " o roku urodzenia " + birthyear;
     }
 
 
