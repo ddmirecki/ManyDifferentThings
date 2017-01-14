@@ -57,6 +57,10 @@ public class Person implements Comparable<Person> {
         return "osoba o imieniu " + firstName + " o nazwisku " + lastname + " o roku urodzenia " + birthyear;
     }
 
+    public String toComplexString() {
+        return "\tosoba" + System.lineSeparator() + "\timie: " + firstName + System.lineSeparator() + "\tnazwisko: " + lastname + System.lineSeparator() + "\turodzona: " + birthyear;
+    }
+
 
     public int compareTo(Person person) {
         if (getBirthyear() < person.getBirthyear()) {
