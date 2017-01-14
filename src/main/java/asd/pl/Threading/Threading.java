@@ -7,11 +7,19 @@ public class Threading {
     public static void main(String[] args) {
         Runnable runnable = new MyThread();
 
+
+
         Runnable runnable2 = new Runnable() {
             @Override
             public void run() {
-                for (int i = 10000; i < 110000; i++) {
-                    System.out.println(i);
+                for (int i = 1; i < 100; i++) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.print(". ");
+
 
                 }
             }
@@ -22,7 +30,7 @@ public class Threading {
         Thread thread2 = new Thread(runnable2);
 
         System.out.println("przed wywolaniem");
-        thread.start();
+//        thread.start();
         thread2.start();
         System.out.println("po wywolaniu");
     }
