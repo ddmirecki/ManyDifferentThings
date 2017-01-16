@@ -23,12 +23,12 @@ public class Threading4 {
         };
         Thread thread = new Thread(runnable);
         thread.start();
-
-
-        Thread thread2 = new Thread(runnable);
-        thread2.start();
         thread.join();
-        thread2.join();
+
+
+//        Thread thread2 = new Thread(runnable);
+//        thread2.start();
+//        thread2.join();
 
         System.out.println(integerList.size());
     }
