@@ -34,9 +34,10 @@ public class Threading5 {
         Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
-                getAllPrimaryNumbers(2_500_000);
+                getAllPrimaryNumbers(2_500_0000);
             }
         };
+
 
     }
 }
