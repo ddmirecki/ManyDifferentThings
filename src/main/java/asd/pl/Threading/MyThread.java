@@ -6,7 +6,7 @@ package asd.pl.Threading;
 public class MyThread implements Runnable {
     @Override
     public void run() {
-        for (int i = 0; i < 10000 ; i++) {
+        for (int i = 5000; i < 5500 ; i++) {
             System.out.println(i);
 
 

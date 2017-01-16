@@ -5,7 +5,7 @@ package asd.pl.Threading;
  */
 public class Threading {
     public static void main(String[] args) {
-        Runnable runnable = new MyThread();
+        Runnable runnable = new MyThread2();
 
 
 
@@ -30,7 +30,7 @@ public class Threading {
         Thread thread2 = new Thread(runnable2);
 
         System.out.println("przed wywolaniem");
-//        thread.start();
+        thread.start();
         thread2.start();
         System.out.println("po wywolaniu");
     }
