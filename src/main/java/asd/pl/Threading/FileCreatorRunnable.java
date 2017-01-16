@@ -9,21 +9,28 @@ import java.io.IOException;
 /**
  * Created by RENT on 2017-01-16.
  */
-//public class FileCreatorRunnable implements Runnable {
-//    @Override
-//    public void run() {
-//        for (int i = 0; i < 1000; i++) {
-//            String filePath = "test2/file" + i + ".txt";
-//
-//            File file = new File(filePath);
-//            try {
-//                Files.write("1", file, Charsets.UTF_8);
+public class FileCreatorRunnable implements Runnable {
+    private int start;
+    private int end;
+
+    public FileCreatorRunnable(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    @Override
+    public void run() {
+        for (int i = start; i < end; i++) {
+            String filePath = "test/file" + i + ".txt";
+
+            File file = new File(filePath);
+            try {
+                Files.write("1", file, Charsets.UTF_8);
 //                files.add(filePath);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    }
-//    }
-//}
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+}

@@ -16,45 +16,10 @@ public class FileCreator2ndThread {
 
         List<String> files = new ArrayList<>();
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
+        Runnable runnable1 = new FileCreatorRunnable(0, 500);
+        Runnable runnable2 = new FileCreatorRunnable(599, 1000);
 
-                for (int i = 0; i < 499; i++) {
-                    String filePath = "test2/file" + i + ".txt";
-
-                    File file = new File(filePath);
-                    try {
-                        Files.write("1", file, Charsets.UTF_8);
-                        files.add(filePath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        };
-
-        Runnable runnable2 = new Runnable() {
-            @Override
-            public void run() {
-
-                for (int i = 500; i < 1000; i++) {
-                    String filePath = "test2/file" + i + ".txt";
-
-                    File file = new File(filePath);
-                    try {
-                        Files.write("1", file, Charsets.UTF_8);
-                        files.add(filePath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        };
-
-        Thread thread = new Thread(runnable);
+        Thread thread = new Thread(runnable1);
         Thread thread2 = new Thread(runnable2);
 
 
