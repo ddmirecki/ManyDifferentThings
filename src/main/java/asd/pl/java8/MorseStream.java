@@ -1,17 +1,16 @@
-package asd.pl;
+package asd.pl.java8;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
+
+import static java.util.stream.Collectors.joining;
 
 /**
- * Created by RENT on 2017-01-11.
+ * Created by RENT on 2017-01-17.
  */
-public class BimapMorse {
-
+public class MorseStream {
     public static String[] alpha = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
             "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",
             "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8",
@@ -33,31 +32,26 @@ public class BimapMorse {
 
     public static String translateToMorse(String text) {
         String[] split = text.split("");
-//        Arrays.stream(split).map(x -> convertChar(x)).collect()
+//       return Arrays.stream(split).map(literka -> convertChar(literka)).collect(joining(" "));
+        return Arrays.stream(split).map(literka -> biMap.get(literka.toLowerCase())).collect(joining(" ")); // mapa zawsze po kluczu zwraca wartosc dlatego mozna pominac metode
 
-        StringBuilder morseString = new StringBuilder();
 
-        for (String element : split) {
-            String convertedChar = convertChar(element, true);
-            morseString.append(convertedChar);
-            morseString.append(" ");
-        }
 
-        return morseString.toString();
     }
 
-    public static String convertChar(String charToConvert, boolean toMorse) {
+    public static String convertChar(String charToConvert) {
         charToConvert = charToConvert.toLowerCase();
 
-        if (toMorse) {
-            return biMap.get(charToConvert);
-        } else {
+
             return biMap.inverse().get(charToConvert);
-        }
+
 
     }
+
+    public static void main(String[] args) {
+        String translated = translateToMorse("Ala ma kota");
+        System.out.println(translated);
+    }
 }
-
-
 
 

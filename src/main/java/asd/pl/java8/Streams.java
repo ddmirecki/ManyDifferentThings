@@ -2,10 +2,13 @@ package asd.pl.java8;
 
 import asd.pl.Person;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.partitioningBy;
 
 /**
  * Created by RENT on 2017-01-16.
@@ -27,6 +30,8 @@ public class Streams {
 
         IntStream.range(0, 100).filter(x -> x % 2 == 0).forEach(x -> System.out.println(x));
 
+        // metoda map zamienia cos w cos innego na co wskazemy
+
         List<Integer> collect1 = integers.stream().map(x -> x * x).collect(Collectors.toList());
         List<Integer> collect = IntStream.range(0, 100).filter(x -> x % 2 == 0).boxed().collect(Collectors.toList());
 
@@ -47,8 +52,64 @@ public class Streams {
 
         System.out.println(newList);
 
+        List<String> lastNameList = personList.stream().map(x -> x.getLastname()).collect(Collectors.toList());
+        System.out.println(lastNameList);
+
+        Set<String> oneLastNameSet = personList.stream().map(x -> x.getLastname()).collect(Collectors.toSet());// to.set - zbiór w ktorym nie ma powtorzen
+        oneLastNameSet.stream().forEach(x -> System.out.println(x));
 
 
+        // summaryStatistics !!!!!!!!!!!!!!!1
+
+        List<Integer> birthYears = personList.stream().map(x -> x.getBirthyear()).collect(Collectors.toList());
+
+        IntSummaryStatistics intSummaryStatistics = personList.stream().mapToInt(x -> x.getBirthyear()).summaryStatistics();
+        //metoda summaryStatistics jest tylko dla IntStreama - specjalny rodzaj streama, ktory ma ta sS, ktora ma duzo ciekawych metod
+        int max = intSummaryStatistics.getMax();
+        double average = intSummaryStatistics.getAverage();
+        long count = intSummaryStatistics.getCount();
+        long sum1 = intSummaryStatistics.getSum();
+
+        // partitionBy !!!!!!!!!!!!! grupowanie z warunkiem - dwie grupy - spelnia/ nie spelnia warunku, zwraca mape typu boolean, lista
+
+        Map<Boolean, List<Person>> collect2 = personList.stream().collect(partitioningBy(x-> x.getBirthyear() < 1970));
+
+        System.out.println("dla TRUE");
+        collect2.get(true).forEach(x-> System.out.println(x));
+
+        System.out.println("dla FALSE");
+        collect2.get(false).forEach(x-> System.out.println(x));
+
+        Map<Boolean, List<Person>> firstNameMap = personList.stream().collect(partitioningBy(x -> x.getFirstName().startsWith("A")));
+
+        List<Person> peopleWithFirstNameStartinwWithA = firstNameMap.get(true);
+        List<Person> peopleWithFirstNameNOTStartinwWithA = firstNameMap.get(false);
+
+        // groupingBy !!!!!!!!!!!!!!! okreslanie po czym chcemy grupowac (wartosc, string) - i tworzy grupy wg tego
+
+        Map<String, List<Person>> collect3 = personList.stream().collect(groupingBy(x -> x.getLastname()));
+
+        Set<String> lastNames = collect3.keySet();
+        for(String lastname: lastNames){
+            System.out.println("WARTOSC KLUCZA" + lastname);
+            List<Person> persons = collect3.get(lastname);
+            for(Person person: persons){
+                System.out.println(person);
+            }
+        }
+
+
+        List<Person> mieckiewicz = collect3.get("Mickiewicz");
+        List<Person> kowalski = collect3.get("Kowalski");
+        List<Person> adamski = collect3.get("Adamski");
+
+        // joining !!!!!!!!!!!!!!!!!! łączenie
+
+        String joined = personList.stream().map(x -> x.getFirstName()).collect(joining("; ", "IMIONA ", " KONIEC"));
+        System.out.println(joined);
+
+        String joined2 = personList.stream().map(x -> x.getFirstName()).collect(joining("; "));
+        System.out.println(joined2);
 
 
         //zamienic liste osob na liste stringow "imie nazwisko"
