@@ -43,6 +43,14 @@ public class Streams {
 
         personList.stream().filter(x ->x.getBirthyear() < 1970).forEach(x -> System.out.println(x));
 
+        List<String> newList = personList.stream().map(x -> x.getFirstName() +" "+ x.getLastname()).collect(Collectors.toList());
+
+        System.out.println(newList);
+
+
+
+
+
         //zamienic liste osob na liste stringow "imie nazwisko"
         //za pomoca streamow sprawdzic czy liczba jest pierwsza (uzyc dwoch streamow poniekad zagniezdzonych w sobie
 
