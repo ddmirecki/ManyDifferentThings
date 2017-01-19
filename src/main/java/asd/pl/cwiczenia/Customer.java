@@ -1,16 +1,17 @@
 package asd.pl.cwiczenia;
 
+
 /**
  * Created by RENT on 2017-01-18.
  */
 public class Customer {
 
-    public Customer(String text){
+    public Customer(String text) throws MyException {
 
         if(text != null) {
             String[] parts = text.split(",");
             if(parts.length != 4){
-                throw new IllegalArgumentException();
+                throw new MyException("Zly format stringa");
             }
             String firstName1 = parts[0];
             this.firstName = firstName1;
@@ -22,7 +23,7 @@ public class Customer {
             String idNumber1 = parts[3];
             this.idNumber = idNumber1;
         }else{
-            throw new IllegalArgumentException();
+            throw new MyException("Zły format stringa");
         }
 
     }
@@ -37,9 +38,50 @@ public class Customer {
                 '}';
     }
 
-    public static void main(String[] args) {
-        Customer customer123 = new Customer("Jan, Kowalski,1980, 111");
+
+
+        @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+
+        if(getClass() != obj.getClass()){
+            return false;
+        }
+       Customer customer = (Customer) obj;
+//
+//            if(customer.getIdNumber().equals(idNumber)){
+//                return true;
+//            }else {
+//                return false;
+//            }                                   LUB:
+            if(customer.getIdNumber() == null){
+                return false;
+            }
+            return idNumber.equals(customer.idNumber);
+        }
+
+
+//
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        Customer customer = (Customer) o;
+//
+//        if (birthYear != customer.birthYear) return false;
+//        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
+//        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
+//        return idNumber != null ? idNumber.equals(customer.idNumber) : customer.idNumber == null;
+//    }
+
+
+    public static void main(String[] args) throws MyException {
+        Customer customer123 = new Customer("Jan", null, 1999, "123");
+        Customer customer124 = new Customer("Jan, Kowalski,1980, 123");
         System.out.println("klient " + customer123.toString());
+        boolean b = customer123.equals(customer124);
+        System.out.println(b);
     }
 
 
@@ -79,6 +121,7 @@ public class Customer {
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
+
 
     public Customer(String firstName, String lastName, int birthYear, String idNumber) {
         this.firstName = firstName;
