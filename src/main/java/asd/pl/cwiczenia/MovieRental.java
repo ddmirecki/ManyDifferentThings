@@ -9,19 +9,38 @@ import java.util.List;
  * Created by RENT on 2017-01-19.
  */
 public class MovieRental {
-    private List<Customer> customers = new ArrayList<>();
+    List<Customer> customers = new ArrayList<>();
     private List<Movie> movies = new ArrayList<>();
+    Customer customer = new Customer();
+
+    @Override
+    public String toString() {
+        return "MovieRental{" +
+                "customers=" + customers +
+                ", movies=" + movies +
+                ", customer=" + customer +
+                '}';
+    }
 
     public Customer getCustomerById(String id){
+        for (int i = 0; i < customers.size() ; i++) {
+            customer.getIdNumber();
+        }
 
-        return null;
+        return customer;
     }
 
     public Customer getCustomerByFirstAndLastName(String firstname, String lastName){
 
         return null;
     }
-    public void addCustomer(Customer customer){
+    public void addCustomer(Customer customer) throws MyException {
+        for (int i = 0; i < customers.size(); i++) {
+//            customers.add(new Customer());
+//            setCustomers(customers(new Customer()));
+
+
+        }
         // dodac klienta - jesli jest klient o tym samym Id to powinna rzucic custom wyjatek
     }
     public void addMovie(Movie movie){
@@ -52,4 +71,13 @@ public class MovieRental {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
+
+    public static void main(String[] args) throws MyException {
+    MovieRental movieRental = new MovieRental();
+    movieRental.addCustomer(new Customer("123,123,123,123"));
+
+        System.out.println(movieRental);
+    }
+
+
 }

@@ -129,6 +129,9 @@ public class Customer {
         this.birthYear = birthYear;
         this.idNumber = idNumber;
     }
+    public Customer(){
+
+    }
 
 
 
