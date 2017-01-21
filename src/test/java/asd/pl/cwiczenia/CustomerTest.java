@@ -1,9 +1,7 @@
 package asd.pl.cwiczenia;
 
-import junit.framework.TestCase;
+import asd.pl.cwiczenia.exceptions.MyException;
 import org.junit.Test;
-
-import javax.swing.*;
 
 import java.awt.*;
 

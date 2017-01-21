@@ -1,6 +1,8 @@
 package asd.pl.cwiczenia;
 
 
+import asd.pl.cwiczenia.exceptions.MyException;
+
 /**
  * Created by RENT on 2017-01-18.
  */

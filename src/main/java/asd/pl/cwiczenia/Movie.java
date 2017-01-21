@@ -1,5 +1,7 @@
 package asd.pl.cwiczenia;
 
+import asd.pl.cwiczenia.exceptions.MyException;
+
 import java.util.Optional;
 
 /**
@@ -14,7 +16,7 @@ public class Movie {
     private int duration; //dlugosc trwania w minutach
     private String id;
 
-        public Movie(String text) throws MyException{
+        public Movie(String text) throws MyException {
             if(text == null){
                 throw new MyException("text jest nullem");
 
