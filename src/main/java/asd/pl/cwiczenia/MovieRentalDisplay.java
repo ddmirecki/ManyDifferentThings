@@ -34,10 +34,11 @@ public class MovieRentalDisplay {
             System.out.println("\t3. Pokaż wypożyczenia");
             System.out.println("\t4. Wypożycz film");
             System.out.println("\t5. Zwróć film");
-            System.out.println("\t6. Wczytaj dane klientow z pliku");
-            System.out.println("\t6. Wczytaj dane filmow z pliku");
-            System.out.println("\t7. Zapisz dane klientow do pliku");
-            System.out.println("\t7. Zapisz dane filmow do pliku");
+            System.out.println("\t6. Dodaj film");
+            System.out.println("\t7. Wczytaj dane klientow z pliku");
+            System.out.println("\t8. Wczytaj dane filmow z pliku");
+            System.out.println("\t9. Zapisz dane klientow do pliku");
+            System.out.println("\t10. Zapisz dane filmow do pliku");
 
             int choosedOption = new Scanner(System.in).nextInt();
         }
