@@ -3,14 +3,17 @@ package asd.pl.cwiczenia;
 import asd.pl.cwiczenia.exceptions.CustomerAlreadyExistsException;
 import asd.pl.cwiczenia.exceptions.MovieAlreadyExistsException;
 import asd.pl.cwiczenia.exceptions.MyException;
+import asd.pl.cwiczenia.exceptions.RentalNotFoundException;
 
 import java.util.Scanner;
 
 /**
  * Created by RENT on 2017-01-21.
  */
-public class MovieRentalDisplay {
+public class
+MovieRentalDisplay {
     MovieRental movieRental;
+
 
     public MovieRentalDisplay() throws MyException, CustomerAlreadyExistsException, MovieAlreadyExistsException {
         movieRental = new MovieRental();
@@ -22,8 +25,12 @@ public class MovieRentalDisplay {
         movieRental.addMovie(new Movie("Terminator,akcja,1980,120,M1"));
         movieRental.addMovie(new Movie("Matrix,sf,1999,120,M2"));
         movieRental.addMovie(new Movie("Terminator2,akcja,1990,120,M3"));
+
+
     }
-    public void run() {
+
+
+    public void run() throws RentalException, MovieAlreadyExistsException, RentalNotFoundException, MyException {
         displayTitle();
 
         while (true) {
@@ -41,8 +48,46 @@ public class MovieRentalDisplay {
             System.out.println("\t10. Zapisz dane filmow do pliku");
 
             int choosedOption = new Scanner(System.in).nextInt();
+
+
+
+            switch (choosedOption){
+                case 1 :
+                    System.out.println(movieRental.getCustomers());
+                    break;
+                case 2 :
+                    System.out.println(movieRental.getMovies() );
+                    break;
+                case 3 :
+                    System.out.println(movieRental.getRentals());
+                    break;
+                case 4:
+                    System.out.println("Podaj ID klienta");
+                    String customerID = new Scanner(System.in).nextLine();
+                    System.out.println("Podaj ID filmu");
+                    String movieID = new Scanner(System.in).nextLine();
+                    movieRental.rent(customerID, movieID);
+                    break;
+                case 5 :
+                    System.out.println("Podaj ID wypozyczenia");
+                    String rentalID = new Scanner(System.in).nextLine();
+                    movieRental.returnMovie(rentalID);
+                    break;
+                case 6 :
+                    System.out.println("podaj dane filmu");
+                    String movieText = new Scanner(System.in).nextLine();
+                    Movie movie = new Movie(movieText);
+                    movieRental.addMovie(movie = new Movie(movieText));
+
+
+
+            }
+
+
         }
+
     }
+
 
     private void displayTitle() {
         for (int i = 0; i < 30; i++) {
@@ -57,7 +102,8 @@ public class MovieRentalDisplay {
         }
     }
 
-    public static void main(String[] args) throws CustomerAlreadyExistsException, MovieAlreadyExistsException, MyException {
+    public static void main(String[] args) throws CustomerAlreadyExistsException, MovieAlreadyExistsException, MyException, RentalNotFoundException, RentalException {
         new MovieRentalDisplay().run();
+
     }
 }

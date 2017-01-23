@@ -49,7 +49,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Title: " + getTitle() + ", Genre: " + getGenre() + ", Year: " + getYear() + ", Duration: " + getDuration() + "id" +getId();
+        return "Title: " + getTitle() + ", Genre: " + getGenre() + ", Year: " + getYear() + ", Duration: " + getDuration() + " id :" +getId();
     }
 
     @Override

@@ -12,7 +12,7 @@ public class MovieRentalMain {
         MovieRental movieRental = new MovieRental();
         movieRental.addCustomer(new Customer("Adam,Kowalski,1980,A"));
         movieRental.addCustomer(new Customer("Jan,Kowalski,1980,AB"));
-        movieRental.addCustomer(new Customer("Adam,Adamski,1980,ABC"));
+        movieRental.addCustomer(new Customer("Jarek,Adamski,1980,ABC"));
         movieRental.addMovie(new Movie("Terminator,akcja,1980,120,M1"));
         movieRental.addMovie(new Movie("Matrix,sf,1999,120,M2"));
         movieRental.addMovie(new Movie("Terminator2,akcja,1990,120,M3"));
