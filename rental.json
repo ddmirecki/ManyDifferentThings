@@ -1,1 +1,20 @@
-"[{\"firstName\":\"Adam\",\"lastName\":\"Kowalski\",\"birthYear\":1980,\"idNumber\":\"A\"},{\"firstName\":\"Jan\",\"lastName\":\"Kowalski\",\"birthYear\":1980,\"idNumber\":\"AB\"},{\"firstName\":\"Adam\",\"lastName\":\"Adamski\",\"birthYear\":1980,\"idNumber\":\"ABC\"}]"
+[
+  {
+    "firstName": "Adam",
+    "lastName": "Kowalski",
+    "birthYear": 1980,
+    "idNumber": "A"
+  },
+  {
+    "firstName": "Jan",
+    "lastName": "Kowalski",
+    "birthYear": 1980,
+    "idNumber": "AB"
+  },
+  {
+    "firstName": "Adam",
+    "lastName": "Adamski",
+    "birthYear": 1980,
+    "idNumber": "ABC"
+  }
+]

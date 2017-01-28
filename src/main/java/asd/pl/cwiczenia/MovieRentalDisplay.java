@@ -4,11 +4,16 @@ import asd.pl.cwiczenia.exceptions.CustomerAlreadyExistsException;
 import asd.pl.cwiczenia.exceptions.MovieAlreadyExistsException;
 import asd.pl.cwiczenia.exceptions.MyException;
 import asd.pl.cwiczenia.exceptions.RentalNotFoundException;
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -58,9 +63,10 @@ MovieRentalDisplay {
             if (choosedOption != 0) {
 
 
+                List<Customer> customers = movieRental.getCustomers();
                 switch (choosedOption) {
                     case 1:
-                        System.out.println(movieRental.getCustomers());
+                        System.out.println(customers);
                         break;
                     case 2:
                         System.out.println(movieRental.getMovies());
@@ -86,16 +92,17 @@ MovieRentalDisplay {
                         Movie movie = new Movie(movieText);
                         movieRental.addMovie(movie = new Movie(movieText));
                     case 7:
-                        String json = gson.toJson(movieRental.getCustomers());
                         FileWriter fileWriter = new FileWriter("rental.json");
-                        gson.toJson(json, fileWriter);
+                        gson.toJson(customers, fileWriter);
                         fileWriter.flush();
                         fileWriter.close();
-                        System.out.println(json);
+                        System.out.println(customers);
                         break;
                     case 8:
-                      MovieRental movieRental = gson.fromJson(new FileReader("rental.json"), MovieRental.class);
-                        System.out.println(movieRental);
+                        String result = Files.toString(new File("rental.json"), Charsets.UTF_8);
+                        System.out.println(result);
+//                      MovieRental movieRental = gson.fromJson(new FileReader("rental.json"), MovieRental.class);
+//                        System.out.println(movieRental);
 
 
                 }
